@@ -10,7 +10,7 @@ export function webpackConfig(options: BuildOptions): Configuration {
 
     return {
         mode,
-        resolve: resolves(),
+        resolve: resolves(options),
         entry: paths.entry,
         output: {
             filename: "[name].[contenthash].js",
