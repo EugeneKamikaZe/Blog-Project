@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development webpack serve",
-    "build:dev": "cross-env NODE_ENV=development webpack --config webpack.config.js",
-    "build:prod": "cross-env NODE_ENV=production webpack --config webpack.config.js"
+    "dev": "webpack serve --env port=3000",
+    "build:dev": "webpack --env mode=development",
+    "build:prod": "webpack --env mode=production"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.0",
@@ -50,7 +50,6 @@
     "babel-loader": "^8.2.3",
     "babel-plugin-i18next-extract": "^0.8.3",
     "copy-webpack-plugin": "^10.2.4",
-    "cross-env": "^7.0.3",
     "css-loader": "^6.6.0",
     "css-modules-typescript-loader": "^4.0.1",
     "eslint": "^8.10.0",

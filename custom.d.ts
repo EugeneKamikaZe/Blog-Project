@@ -11,12 +11,10 @@ declare module "*.png" {
     export default content;
 }
 
-declare module '*.module.css' {
-    const classes: { readonly [key: string]: string };
-    export default classes;
-}
-
 declare module '*.module.scss' {
-    const classes: { readonly [key: string]: string };
-    export default classes;
+    interface IClassNames {
+        [className: string]: string
+    }
+    const classNames: IClassNames;
+    export = classNames;
 }
