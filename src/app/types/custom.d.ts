@@ -5,7 +5,7 @@ declare module '*.svg' {
     export default SVG;
 }
 
-declare module "*.png" {
+declare module '*.png' {
     const content: any;
     export default content;
 }
@@ -18,4 +18,4 @@ declare module '*.module.scss' {
     export = classNames;
 }
 
-declare const __IS_DEV__: boolean
+declare const __IS_DEV__: boolean;
