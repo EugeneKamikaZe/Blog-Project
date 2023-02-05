@@ -26,14 +26,41 @@ export function loaders({isDev}: BuildOptions): RuleSetRule[] {
         ]
     }
 
+    const babelLoader = {
+        test: /\.(js|jsx|tsx)$/,
+        exclude: /node_modules/,
+        use: {
+            loader: "babel-loader",
+            options: {
+                presets: ['@babel/preset-env'],
+                plugins: [
+                    [
+                        "i18next-extract",
+                        {
+                            locales: ['ru', 'en'],
+                            keyAsDefaultValue: true,
+                        }
+                    ]
+                ]
+            }
+        }
+    }
+
     const imageLoader = {
         test: /\.(png|jpe?g|gif)$/i,
         use: 'file-loader'
     }
 
+    const svgLoader = {
+        test: /\.svg$/,
+        use: '@svgr/webpack'
+    }
+
     return [
+        babelLoader,
         tsLoader,
         cssLoader,
         imageLoader,
+        svgLoader,
     ]
 }

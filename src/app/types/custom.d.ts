@@ -1,9 +1,8 @@
 declare module '*.svg' {
-    import React = require('react');
+    import React from 'react';
 
-    export const ReactComponent: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
-    const src: string;
-    export default src;
+    const SVG: React.VFC<React.SVGProps<SVGSVGElement>>;
+    export default SVG;
 }
 
 declare module "*.png" {
@@ -18,3 +17,5 @@ declare module '*.module.scss' {
     const classNames: IClassNames;
     export = classNames;
 }
+
+declare const __IS_DEV__: boolean

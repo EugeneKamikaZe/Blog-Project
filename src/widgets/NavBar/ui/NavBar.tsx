@@ -1,19 +1,19 @@
 import React from 'react';
-import {Link} from "react-router-dom";
 import {classNames} from "shared/lib/classNames/classNames";
+import {AppLink, AppLinkTheme} from "shared/ui/AppLink/AppLink";
 import s from './NavBar.module.scss'
 
 interface NavBarProps {
     className?: string
 }
 
-const NavBar = ({className}) => {
+export const NavBar = ({className}: NavBarProps) => {
     return (
-        <div className={classNames('navbar')}>
-            <Link to={'/'}>Home</Link>
-            <Link to={'/about'}>About</Link>
+        <div className={classNames(s.NavBar, {}, [className])}>
+            <div className={s.links}>
+                <AppLink to={'/'} theme={AppLinkTheme.SECONDARY}>Home</AppLink>
+                <AppLink to={'/about'} theme={AppLinkTheme.SECONDARY}>About</AppLink>
+            </div>
         </div>
     );
 };
-
-export default NavBar;
