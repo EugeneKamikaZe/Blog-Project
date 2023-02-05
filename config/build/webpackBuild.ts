@@ -5,7 +5,7 @@ import {loaders} from "./loaders";
 import {plugins} from "./plugins";
 import {devServer} from "./devServer";
 
-export function webpackConfig(options: BuildOptions): Configuration {
+export function webpackBuild(options: BuildOptions): Configuration {
     const {paths, mode, isDev} = options
 
     return {
