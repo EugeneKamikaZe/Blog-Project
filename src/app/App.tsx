@@ -4,13 +4,14 @@ import { AppRouter } from 'app/providers/router';
 import { NavBar } from 'widgets/NavBar';
 import { Sidebar } from 'widgets/Sidebar';
 import { Suspense } from 'react';
+import { PageLoader } from 'widgets/PageLoader';
 
 function App() {
     const { theme } = useTheme();
 
     return (
         <div className={classNames('app', {}, [theme])}>
-            <Suspense fallback={(<p>...Loading</p>)}>
+            <Suspense fallback={<PageLoader />}>
                 <NavBar />
 
                 <div className="content-page">
