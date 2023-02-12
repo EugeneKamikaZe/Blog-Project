@@ -27,6 +27,7 @@ export function plugins(
         plugins.push(new webpack.HotModuleReplacementPlugin());
         plugins.push(new BundleAnalyzerPlugin({
             openAnalyzer: false,
+
         }));
     }
 
