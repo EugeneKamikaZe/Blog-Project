@@ -8,7 +8,7 @@ import { BuildOptions } from './types/config';
 export function plugins(
     { paths, port, isDev }: BuildOptions,
 ): webpack.WebpackPluginInstance[] {
-    return [
+    const plugins = [
         new HTMLWebpackPlugin({
             template: paths.html,
         }),
@@ -17,15 +17,18 @@ export function plugins(
             filename: 'css/[name].[contenthash:8].css',
             chunkFilename: 'css/[name].[contenthash:8].css',
         }),
-        new BundleAnalyzerPlugin({
-            analyzerPort: 3480,
-            reportFilename: 'analyze.html',
-            openAnalyzer: false,
-        }),
-        isDev ? new ReactRefreshPlugin() : undefined,
-        isDev ? new webpack.HotModuleReplacementPlugin() : undefined,
         new webpack.DefinePlugin({
             __IS_DEV__: JSON.stringify(isDev),
         }),
     ];
+
+    if (isDev) {
+        plugins.push(new ReactRefreshPlugin());
+        plugins.push(new webpack.HotModuleReplacementPlugin());
+        plugins.push(new BundleAnalyzerPlugin({
+            openAnalyzer: false,
+        }));
+    }
+
+    return plugins;
 }
