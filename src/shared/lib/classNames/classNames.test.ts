@@ -1,5 +1,6 @@
 import { classNames } from './classNames';
 
+// TODO написать асинхронно
 describe('classNames', () => {
     test('with only first param', () => {
         expect(classNames('someClass')).toBe('someClass');
