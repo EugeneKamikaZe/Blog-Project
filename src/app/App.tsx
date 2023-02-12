@@ -14,8 +14,6 @@ function App() {
             <Suspense fallback={<PageLoader />}>
                 <NavBar />
 
-                <p>test</p>
-
                 <div className="content-page">
                     <Sidebar />
                     <AppRouter />
