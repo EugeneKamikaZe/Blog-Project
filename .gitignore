@@ -1,6 +1,7 @@
 # dependencies
 /node_modules
 *-lock.json
+/storybook-static
 
 # System Files
 .DS_Store

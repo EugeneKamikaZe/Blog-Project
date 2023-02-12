@@ -12,7 +12,8 @@
     "lint:scss:fix": "npx stylelint \"**/*.scss\" --fix",
     "test:unit": "jest --config ./config/jest/jest.config.ts",
     "test:ui": "npx loki test --port 6006",
-    "test:ui:approve": "npx loki approve",
+    "test:ui:ok": "npx loki approve",
+    "test:ui:ci": "npx loki --requireReference --reactUri file:./storybook-static",
     "storybook": "start-storybook -c ./config/storybook -p 6006",
     "storybook:build": "build-storybook -c ./config/storybook"
   },
@@ -97,6 +98,9 @@
     "webpack-dev-server": "^4.7.4"
   },
   "loki": {
+    "loks-same": {
+      "ignoreCaret": true
+    },
     "configurations": {
       "chrome.laptop": {
         "target": "chrome.app",
