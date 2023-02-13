@@ -1,4 +1,7 @@
 {
+  "shortLng": "En",
   "language": "English",
-  "not_found": "Not Found"
+  "not_found": "Not Found",
+  "link_home": "Home",
+  "link_about": "About"
 }
