@@ -6,7 +6,6 @@ import i18nForTests from 'shared/config/i18n/i18nForTests';
 export function renderWithTranslation(component: ReactNode) {
     return render(
         <I18nextProvider i18n={i18nForTests}>
-            {/* TODO Подставляет конфиг не для теста, решить!!!!!!!!!!!! */}
             {component}
         </I18nextProvider>,
     );
