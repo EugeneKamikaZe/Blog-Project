@@ -1,5 +1,7 @@
 {
   "shortLng": "Ру",
   "language": "Русский",
-  "not_found": "Не найдено"
+  "not_found": "Не найдено",
+  "link_home": "Главная",
+  "link_about": "О сайте"
 }
