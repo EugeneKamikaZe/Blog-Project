@@ -156,7 +156,7 @@ jobs:
     strategy:
       matrix:
         node-version: [17.x]
-    needs: install-cache
+    needs: [ install-cache, build-storybook ]
     steps:
       - name: Checkout Commit
         uses: actions/checkout@v3
