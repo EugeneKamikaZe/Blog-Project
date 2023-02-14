@@ -12,6 +12,8 @@ const AboutPage = ({ className }: AboutPageProps) => {
     return (
         <div className={classNames(s.AboutPage, {}, [className])}>
             <h1>{t('title')}</h1>
+
+            <div>{t('test string')}</div>
         </div>
     );
 };
