@@ -149,7 +149,7 @@ jobs:
            
       - name: Build storybook
         run: |
-          storybook:build
+          yarn storybook:build
 
   regress-test:
     runs-on: ubuntu-latest
