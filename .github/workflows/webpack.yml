@@ -1,38 +1,190 @@
-name: linting, testing, building
+name: CI
+
 on:
-  push:
-    branches: [ master ]
   pull_request:
-    branches: [ master ]
+    branches:
+      - main
+    paths:
+      - '**.ts'
+      - '**.tsx'
+      - '**.scss'
+      - '**.yml'
+      - '**.json'
+
+concurrency:
+  group: ${{ github.head_ref }}
+  cancel-in-progress: true
+    
 jobs:
-  pipeline:
+  install-cache:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [ 17.x ]
-
+        node-version: [17.x]
     steps:
-      - uses: actions/checkout@v2
-      - name: Staring Node.js ${{ matrix.node-version }}
+      - name: Checkout Commit
+        uses: actions/checkout@v3
+        
+      - name: Use Node.js ${{ matrix.node }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node }}
+          
+      - name: Cache yarn dependencies
+        uses: actions/cache@v2
+        id: cache-dependencies
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+   
+      - name: Install Dependencies
+        if: steps.cache-dependencies.outputs.cache-hit != 'true' || steps.cache-cypress-binary.outputs.cache-hit != 'true'
+        run: |
+          yarn install
+
+  lint-ts:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [17.x]
+    needs: install-cache
+    steps:
+      - name: Checkout Commit
+        uses: actions/checkout@v3
+        
+      - name: Use Node.js ${{ matrix.node }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node }}
+          
+      - name: Restore yarn dependencies
+        uses: actions/cache@v3
+        id: cache-dependencies
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+            
+      - name: Run lint
+        run: |
+          yarn lint:ts
+          
+  lint-scss:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [17.x]
+    needs: install-cache
+    steps:
+      - name: Checkout Commit
+        uses: actions/checkout@v3
+        
+      - name: Use Node.js ${{ matrix.node }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node }}
+          
+      - name: Restore yarn dependencies
+        uses: actions/cache@v3
+        id: cache-dependencies
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+          
+      - name: Run lint
+        run: |
+          yarn lint:scss
+
+  unit-test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [17.x]
+    needs: install-cache
+    steps:
+      - name: Checkout Commit
+        uses: actions/checkout@v3
+        
+      - name: Use Node.js ${{ matrix.node }}
         uses: actions/setup-node@v1
         with:
-          node-version: ${{ matrix.node-version }}
-      - name: install modules
-        run: npm install
-      - name: build production project
-        run: npm run build:prod
-        if: always()
-      - name: linting typescript
-        run: npm run lint:ts
-        if: always()
-      - name: linting css
-        run: npm run lint:scss
-      - name: unit testing
-        if: always()
-        run: npm run test:unit
-      - name: build storybook
-        run: npm run storybook:build
-        if: always()
-      - name: screenshot testing
-        run: npm run test:ui:ci
-        if: always()
+          node-version: ${{ matrix.node }}
+          
+      - name: Restore yarn dependencies
+        uses: actions/cache@v3
+        id: cache-dependencies
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+            
+      - name: Run test
+        run: |
+          yarn test:unit
+
+  regress-test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [17.x]
+    needs: install-cache
+    steps:
+      - name: Checkout Commit
+        uses: actions/checkout@v3
+        
+      - name: Use Node.js ${{ matrix.node }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node }}
+          
+      - name: Restore yarn dependencies
+        uses: actions/cache@v3
+        id: cache-dependencies
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+           
+      - name: Build storybook
+        run: |
+          storybook:build
+      
+      - name: Run test
+        run: |
+          yarn test:ui:ci
+          
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [17.x]
+    needs: [unit-test, regress-test, lint-ts, lint-scss]
+    steps:
+      - name: Checkout Commit
+        uses: actions/checkout@v3
+        
+      - name: Use Node.js ${{ matrix.node }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node }}
+          
+      - name: Restore yarn dependencies
+        uses: actions/cache@v3
+        id: cache-dependencies
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+            
+      - name: Run build
+        run: |
+          yarn build:prod
+       
