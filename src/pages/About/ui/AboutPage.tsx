@@ -13,7 +13,7 @@ const AboutPage = ({ className }: AboutPageProps) => {
         <div className={classNames(s.AboutPage, {}, [className])}>
             <h1>{t('title')}</h1>
 
-            <div>{t('test string')}</div>
+            <div>{t('testString')}</div>
         </div>
     );
 };
