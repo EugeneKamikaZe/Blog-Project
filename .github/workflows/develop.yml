@@ -160,7 +160,7 @@ jobs:
     strategy:
       matrix:
         node-version: [17.x]
-    needs: [unit-test, regress-test, lint-ts, lint-scss]
+    needs: [unit-test, regress-test, lint]
     steps:
       - name: Checkout Commit
         uses: actions/checkout@v3
