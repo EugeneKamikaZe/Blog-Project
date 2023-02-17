@@ -2,7 +2,6 @@ import webpack, { RuleSetRule } from 'webpack';
 import path from 'path';
 import { buildCssLoader } from '../build/loaders/cssLoader';
 import { BuildPath } from '../build/types/config';
-import { buildSvgLoader } from '../build/loaders/svgLoader';
 
 export default ({ config }: {config: webpack.Configuration}) => {
     const paths: BuildPath = {
@@ -23,7 +22,10 @@ export default ({ config }: {config: webpack.Configuration}) => {
         return rule;
     });
 
-    config.module.rules.push(buildSvgLoader());
+    config.module.rules.push({
+        test: /\.svg$/,
+        use: ['@svgr/webpack'],
+    });
     config.module.rules.push(buildCssLoader(true));
 
     return config;

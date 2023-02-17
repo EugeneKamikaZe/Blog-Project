@@ -5,6 +5,7 @@ import { NavBar } from 'widgets/NavBar';
 import { Sidebar } from 'widgets/Sidebar';
 import { Suspense } from 'react';
 import { PageLoader } from 'widgets/PageLoader';
+import './styles/index.scss';
 
 function App() {
     const { theme } = useTheme();

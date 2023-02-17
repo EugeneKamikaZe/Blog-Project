@@ -1,6 +1,5 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Button, ButtonTheme } from 'shared/ui/Buton/Button';
-import i18n from 'shared/config/i18n/i18n';
 import { useTranslation } from 'react-i18next';
 import s from './LangSwitche.module.scss';
 
@@ -10,7 +9,8 @@ interface LangSwitcherProps {
 }
 
 export const LangSwitcher = ({ className, isShort }: LangSwitcherProps) => {
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
+    // i18 брать только из useTranslation, иначе ломаются компоненты, использующие LangSwitcher
 
     const handleSwitch = () => {
         i18n.changeLanguage(i18n.language === 'ru' ? 'en' : 'ru');

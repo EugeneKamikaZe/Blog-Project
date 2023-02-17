@@ -1,44 +1,42 @@
 import { classNames } from 'shared/lib/classNames/classNames';
-import React, { useState } from 'react';
-import { ThemeSwitcher } from 'widgets/ThemeSwitcher';
-import { LangSwitcher } from 'widgets/LangSwitcher';
-import { Button, ButtonSize, ButtonTheme } from 'shared/ui/Buton/Button';
-import { AppLink, AppLinkTheme } from 'shared/ui/AppLink/AppLink';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { RouterPath } from 'shared/config/routerConfig/routerConfig';
+import { AppLink, AppLinkTheme } from 'shared/ui/AppLink/AppLink';
 import AboutIcon from 'shared/assets/icons/about-20-20.svg';
 import MainIcon from 'shared/assets/icons/main-20-20.svg';
+import { Button, ButtonSize, ButtonTheme } from 'shared/ui/Buton/Button';
+import { RouterPath } from 'shared/config/routerConfig/routerConfig';
+import { ThemeSwitcher } from 'widgets/ThemeSwitcher';
+import { LangSwitcher } from 'widgets/LangSwitcher';
 import s from './Sidebar.module.scss';
 
 interface SidebarProps {
-    className?: string
+    className?: string;
 }
 
 export const Sidebar = ({ className }: SidebarProps) => {
-    const [isCollapsed, setIsCollapsed] = useState(false);
-
-    const handleToggle = () => {
-        setIsCollapsed((prev) => !prev);
-    };
-
+    const [collapsed, setCollapsed] = useState(false);
     const { t } = useTranslation();
+
+    const onToggle = () => {
+        setCollapsed((prev) => !prev);
+    };
 
     return (
         <div
             data-testid="sidebar"
-            className={classNames(s.Sidebar, { [s.collapsed]: isCollapsed }, [className])}
+            className={classNames(s.Sidebar, { [s.collapsed]: collapsed }, [className])}
         >
             <Button
                 data-testid="sidebar-toggle"
+                onClick={onToggle}
                 className={s.collapseBtn}
-                onClick={handleToggle}
+                theme={ButtonTheme.BACKGROUND_INVERTED}
                 size={ButtonSize.L}
                 isSquare
-                theme={ButtonTheme.BACKGROUND_INVERTED}
             >
-                {isCollapsed ? '>' : '<'}
+                {collapsed ? '>' : '<'}
             </Button>
-
             <div className={s.items}>
                 <AppLink
                     theme={AppLinkTheme.SECONDARY}
@@ -61,10 +59,12 @@ export const Sidebar = ({ className }: SidebarProps) => {
                     </span>
                 </AppLink>
             </div>
-
             <div className={s.switchers}>
                 <ThemeSwitcher />
-                <LangSwitcher className={s.lang} isShort={isCollapsed} />
+                <LangSwitcher
+                    isShort={collapsed}
+                    className={s.lang}
+                />
             </div>
         </div>
     );
