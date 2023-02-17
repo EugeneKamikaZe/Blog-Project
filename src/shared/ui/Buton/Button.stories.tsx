@@ -24,6 +24,7 @@ export const Clear = Template.bind({});
 Clear.args = {
     children: 'Text',
     theme: ButtonTheme.CLEAR,
+    backgrounds: { default: 'light' },
 };
 
 export const Outline = Template.bind({});

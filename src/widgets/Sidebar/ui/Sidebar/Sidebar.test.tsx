@@ -3,12 +3,12 @@ import { Sidebar } from 'widgets/Sidebar/ui/Sidebar/Sidebar';
 import { componentRender } from 'shared/lib/tests/componentRender/componentRender';
 
 describe('Sidebar', () => {
-    test('Test render', () => {
+    test('with only first param', () => {
         componentRender(<Sidebar />);
         expect(screen.getByTestId('sidebar')).toBeInTheDocument();
     });
 
-    test('Test render', () => {
+    test('test toggle', () => {
         componentRender(<Sidebar />);
         const toggleBtn = screen.getByTestId('sidebar-toggle');
         expect(screen.getByTestId('sidebar')).toBeInTheDocument();

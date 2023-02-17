@@ -5,7 +5,6 @@ import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator';
 import { Theme } from 'app/providers/ThemeProvider';
 import { Sidebar } from './Sidebar';
 
-// TODO не отображается
 export default {
     title: 'widget/Sidebar',
     component: Sidebar,
