@@ -4,6 +4,7 @@
   "description": "",
   "scripts": {
     "dev": "webpack serve --env port=3400",
+    "dev:server": "node ./json-server/index.js",
     "build:dev": "webpack --env mode=development",
     "build:prod": "webpack --env mode=production",
     "lint:ts": "eslint -c ./config/eslint/.eslintrc.js \"**/*.{ts,tsx}\"",
