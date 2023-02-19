@@ -49,7 +49,7 @@ jobs:
           - 2
     needs: install-cache
     steps:
-    - uses: actions/checkout@develop
+    - uses: actions/checkout@master
     
     - name: Use Node.js ${{ matrix.node }}
       uses: actions/setup-node@v2
@@ -71,7 +71,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Coveralls Finished
-      uses: coverallsapp/github-action@develop
+      uses: coverallsapp/github-action@master
       with:
         github-token: ${{ secrets.github_token }}
         parallel-finished: true
