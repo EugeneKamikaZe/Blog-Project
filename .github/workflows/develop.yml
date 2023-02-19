@@ -39,7 +39,7 @@ jobs:
         run: |
           yarn install
       
-#       DOESNT WORK
+#       DOESN`T WORK
 #   coverage:
 #     runs-on: ubuntu-latest
 #     strategy:
@@ -55,6 +55,7 @@ jobs:
 #         node-version: ${{ matrix.node }}
     
 #     - name: Test
+#       if: steps.cache-dependencies.outputs.cache-hit != 'true'
 #       run: yarn test:coveralls
       
 #     - name: Coveralls Parallel
