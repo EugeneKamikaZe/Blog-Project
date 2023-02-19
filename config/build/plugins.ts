@@ -3,6 +3,7 @@ import HTMLWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import ReactRefreshPlugin from '@pmmmwh/react-refresh-webpack-plugin';
+import StatoscopeWebpackPlugin from '@statoscope/webpack-plugin';
 import { BuildOptions } from './types/config';
 
 export function plugins(
@@ -24,6 +25,7 @@ export function plugins(
 
     if (isDev) {
         plugins.push(new ReactRefreshPlugin());
+        plugins.push(new StatoscopeWebpackPlugin());
         plugins.push(new webpack.HotModuleReplacementPlugin());
         plugins.push(new BundleAnalyzerPlugin({
             openAnalyzer: false,
