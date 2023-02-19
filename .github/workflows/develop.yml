@@ -44,6 +44,7 @@ jobs:
     strategy:
       matrix:
         node-version: [17.x]
+    needs: install-cache
     steps:
     - uses: actions/checkout@v3
     
@@ -51,12 +52,9 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node }}
-
-    - name: Install
-      run: yarn install
     
     - name: Test
-      run: make test-coverage
+      run: yarn test:coveralls
       
     - name: Coveralls Parallel
       uses: coverallsapp/github-action@master
