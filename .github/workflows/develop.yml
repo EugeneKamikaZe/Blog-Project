@@ -38,6 +38,43 @@ jobs:
         if: steps.cache-dependencies.outputs.cache-hit != 'true'
         run: |
           yarn install
+          
+  coverage:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [17.x]
+        test_number:
+          - 1
+          - 2
+    needs: install-cache
+    steps:
+    - uses: actions/checkout@master
+    
+    - name: Use Node.js ${{ matrix.node }}
+      uses: actions/setup-node@v2
+      with:
+        node-version: ${{ matrix.node }}
+
+    - name: Test ${{ matrix.test_number }}
+      run: make test-coverage-${{ matrix.test_number }}
+      
+    - name: Coveralls Parallel
+      uses: coverallsapp/github-action@master
+      with:
+        github-token: ${{ secrets.github_token }}
+        flag-name: run-${{ matrix.test_number }}
+        parallel: true
+        
+  finish:
+    needs: coverage
+    runs-on: ubuntu-latest
+    steps:
+    - name: Coveralls Finished
+      uses: coverallsapp/github-action@master
+      with:
+        github-token: ${{ secrets.github_token }}
+        parallel-finished: true
          
   lint:
     runs-on: ubuntu-latest
