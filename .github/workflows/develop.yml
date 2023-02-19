@@ -39,39 +39,40 @@ jobs:
         run: |
           yarn install
       
-  coverage:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [17.x]
-    needs: [ install-cache, unit-test ]
-    steps:
-    - uses: actions/checkout@v3
+#       DOESN`T WORK
+#   coverage:
+#     runs-on: ubuntu-latest
+#     strategy:
+#       matrix:
+#         node-version: [17.x]
+#     needs: [ install-cache, unit-test ]
+#     steps:
+#     - uses: actions/checkout@v3
     
-    - name: Use Node.js ${{ matrix.node }}
-      uses: actions/setup-node@v3
-      with:
-        node-version: ${{ matrix.node }}
+#     - name: Use Node.js ${{ matrix.node }}
+#       uses: actions/setup-node@v3
+#       with:
+#         node-version: ${{ matrix.node }}
     
-    - name: Test
-      if: steps.cache-dependencies.outputs.cache-hit != 'true'
-      run: yarn test:coveralls
+#     - name: Test
+#       if: steps.cache-dependencies.outputs.cache-hit != 'true'
+#       run: yarn test:coveralls
       
-    - name: Coveralls Parallel
-      uses: coverallsapp/github-action@master
-      with:
-        github-token: ${{ secrets.github_token }}
-        parallel: true
+#     - name: Coveralls Parallel
+#       uses: coverallsapp/github-action@master
+#       with:
+#         github-token: ${{ secrets.github_token }}
+#         parallel: true
         
-  finish:
-    needs: coverage
-    runs-on: ubuntu-latest
-    steps:
-    - name: Coveralls Finished
-      uses: coverallsapp/github-action@master
-      with:
-        github-token: ${{ secrets.github_token }}
-        parallel-finished: true
+#   finish:
+#     needs: coverage
+#     runs-on: ubuntu-latest
+#     steps:
+#     - name: Coveralls Finished
+#       uses: coverallsapp/github-action@master
+#       with:
+#         github-token: ${{ secrets.github_token }}
+#         parallel-finished: true
          
   lint:
     runs-on: ubuntu-latest
