@@ -99,12 +99,10 @@ jobs:
             ${{ runner.os }}-yarn-
           
       - name: Run lint SCSS
-        if: steps.cache-dependencies.outputs.cache-hit != 'true'
         run: |
           yarn lint:scss
           
       - name: Run lint TS
-        if: steps.cache-dependencies.outputs.cache-hit != 'true'
         run: |
           yarn lint:ts
 
@@ -133,7 +131,6 @@ jobs:
             ${{ runner.os }}-yarn-
             
       - name: Run test
-        if: steps.cache-dependencies.outputs.cache-hit != 'true'
         run: |
           yarn test:unit
 
@@ -162,7 +159,6 @@ jobs:
             ${{ runner.os }}-yarn-
            
       - name: Build storybook
-        if: steps.cache-dependencies.outputs.cache-hit != 'true'
         run: |
           yarn storybook:build
 
@@ -191,7 +187,6 @@ jobs:
             ${{ runner.os }}-yarn-
 
       - name: Run test
-        if: steps.cache-dependencies.outputs.cache-hit != 'true'
         run: |
           yarn test:ui:ci
           
@@ -220,7 +215,6 @@ jobs:
             ${{ runner.os }}-yarn-
             
       - name: Run build
-        if: steps.cache-dependencies.outputs.cache-hit != 'true'
         run: |
           yarn build:prod
        
