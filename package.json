@@ -17,7 +17,7 @@
     "test:ui:report": "npm run test:ui:json && npm run test:ui:html",
     "test:ui:json": "node scripts/generate-visual-json-report.js",
     "test:ui:html": "reg-cli --from .loki/report.json --report .loki/report.html",
-    "test:coveralls": "yarn test:unit --coverage && coveralls < coverage/lcov.info",
+    "test:coveralls": "coveralls < coverage/lcov.info",
     "storybook": "start-storybook -c ./config/storybook -p 6006",
     "storybook:build": "build-storybook -c ./config/storybook"
   },
