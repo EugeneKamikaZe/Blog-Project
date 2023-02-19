@@ -4,5 +4,7 @@
   "not_found": "Не найдено",
   "link_home": "Главная",
   "link_about": "О сайте",
-  "sign_in": "Войти"
+  "sign_in": "Войти",
+  "type_username": "Введите Имя",
+  "type_password": "Введите Пароль"
 }

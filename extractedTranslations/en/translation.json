@@ -13,6 +13,11 @@
   "testString": "testString",
   "throw error": "throw error",
   "title": "title",
+  "type_password": "type_password",
+  "type_password >": "type_password >",
+  "type_password>": "type_password>",
+  "type_username": "type_username",
+  "type_username >": "type_username >",
   "Войти": "Войти",
   "Обновить страницу": "Обновить страницу",
   "Произошла непредвиденная ошибка": "Произошла непредвиденная ошибка"

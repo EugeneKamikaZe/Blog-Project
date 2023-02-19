@@ -4,5 +4,7 @@
   "not_found": "Not Found",
   "link_home": "Home",
   "link_about": "About",
-  "sign_in": "Sign In"
+  "sign_in": "Sign In",
+  "type_username": "Type Username",
+  "type_password": "Type Password"
 }
