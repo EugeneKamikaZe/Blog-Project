@@ -6,6 +6,9 @@
 import path from 'path';
 
 export default {
+    globals: {
+        __IS_DEV__: true,
+    },
     clearMocks: true,
     testEnvironment: 'jsdom',
     coveragePathIgnorePatterns: [
@@ -27,9 +30,9 @@ export default {
     testMatch: [
         '<rootDir>src/**/*(*.)@(spec|test).[tj]s?(x)',
     ],
-    // modulePaths: [
-    //     '<rootdir>/src',
-    // ],
+    modulePaths: [
+        '<rootdir>/src',
+    ],
     setupFilesAfterEnv: ['<rootDir>config/jest/setupTests.ts'],
     moduleNameMapper: {
         '\\.s?css$': 'identity-obj-proxy',

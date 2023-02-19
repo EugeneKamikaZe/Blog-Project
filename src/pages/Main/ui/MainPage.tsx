@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
 import s from 'pages/NotFound/ui/NotFound.module.scss';
+import { Counter } from 'entities/Counter';
 
 interface MainPageProps {
     className?: string

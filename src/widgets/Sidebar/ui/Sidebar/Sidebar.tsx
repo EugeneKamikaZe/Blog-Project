@@ -2,12 +2,12 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { AppLink, AppLinkTheme } from 'shared/ui/AppLink/AppLink';
-import AboutIcon from 'shared/assets/icons/about-20-20.svg';
-import MainIcon from 'shared/assets/icons/main-20-20.svg';
 import { Button, ButtonSize, ButtonTheme } from 'shared/ui/Buton/Button';
 import { RouterPath } from 'shared/config/routerConfig/routerConfig';
 import { ThemeSwitcher } from 'widgets/ThemeSwitcher';
 import { LangSwitcher } from 'widgets/LangSwitcher';
+import AboutIcon from 'shared/assets/icons/about-20-20.svg';
+import MainIcon from 'shared/assets/icons/main-20-20.svg';
 import s from './Sidebar.module.scss';
 
 interface SidebarProps {
