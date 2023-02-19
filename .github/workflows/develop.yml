@@ -47,6 +47,7 @@ jobs:
         test_number:
           - 1
           - 2
+    needs: install-cache
     steps:
     - uses: actions/checkout@develop
     
@@ -64,6 +65,16 @@ jobs:
         github-token: ${{ secrets.github_token }}
         flag-name: run-${{ matrix.test_number }}
         parallel: true
+        
+  finish:
+    needs: coverage
+    runs-on: ubuntu-latest
+    steps:
+    - name: Coveralls Finished
+      uses: coverallsapp/github-action@develop
+      with:
+        github-token: ${{ secrets.github_token }}
+        parallel-finished: true
          
   lint:
     runs-on: ubuntu-latest
