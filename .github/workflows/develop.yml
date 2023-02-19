@@ -44,7 +44,7 @@ jobs:
     strategy:
       matrix:
         node-version: [17.x]
-    needs: install-cache
+    needs: [ install-cache, unit-test ]
     steps:
     - uses: actions/checkout@v3
     
