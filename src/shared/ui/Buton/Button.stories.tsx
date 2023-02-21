@@ -73,6 +73,14 @@ Square.args = {
     isSquare: true,
 };
 
+export const SquareDisabled = Template.bind({});
+SquareDisabled.args = {
+    children: '>',
+    theme: ButtonTheme.BACKGROUND_INVERTED,
+    isDisabled: true,
+    isSquare: true,
+};
+
 export const SquareL = Template.bind({});
 SquareL.args = {
     children: '>',

@@ -8,6 +8,8 @@
   },
   "link_about": "link_about",
   "link_home": "link_home",
+  "login_form": "login_form",
+  "logout": "logout",
   "not_found": "not_found",
   "sign_in": "sign_in",
   "testString": "testString",

@@ -6,5 +6,7 @@
   "link_about": "О сайте",
   "sign_in": "Войти",
   "type_username": "Введите Имя",
-  "type_password": "Введите Пароль"
+  "type_password": "Введите Пароль",
+  "login_form": "Форма авторизации",
+  "login_error": "Неверный логин или пароль"
 }

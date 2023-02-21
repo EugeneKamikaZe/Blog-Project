@@ -6,5 +6,7 @@
   "link_about": "About",
   "sign_in": "Sign In",
   "type_username": "Type Username",
-  "type_password": "Type Password"
+  "type_password": "Type Password",
+  "login_form": "Login form",
+  "login_error": "Invalid login or password"
 }
