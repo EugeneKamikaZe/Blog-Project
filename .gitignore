@@ -1,7 +1,6 @@
 # dependencies
 /node_modules
 /coverage
-*-lock.json
 /storybook-static
 .loki/report.html
 .loki/report.json
@@ -22,3 +21,4 @@ npm-debug.log
 
 # Block build and server
 /dist
+/build

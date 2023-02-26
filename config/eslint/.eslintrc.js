@@ -7,6 +7,7 @@ module.exports = {
     extends: [
         'plugin:react/recommended',
         'airbnb',
+        'plugin:i18next/recommended',
     ],
     parser: '@typescript-eslint/parser',
     parserOptions: {
@@ -39,19 +40,20 @@ module.exports = {
         'react/function-component-definition': 'off',
         'no-shadow': 'off',
         'import/extensions': 'off',
-        'import/no-extraneous-dependencies': 'warn',
+        'import/no-extraneous-dependencies': 'off',
         'no-underscore-dangle': 'off',
-        'i18next/no-literal-string': ['error',
+        'i18next/no-literal-string': [
+            'error',
             {
                 markupOnly: true,
-                ignoreAttribute: ['data-testid'],
+                ignoreAttribute: ['data-testid', 'to'],
             },
         ],
-        'max-len': ['error', { ignoreComments: true, code: 140 }],
+        'max-len': ['error', { ignoreComments: true, code: 120 }],
         'jsx-a11y/no-static-element-interactions': 'off',
         'jsx-a11y/click-events-have-key-events': 'off',
         'react-hooks/rules-of-hooks': 'error', // Checks rules of Hooks
-        'react-hooks/exhaustive-deps': 'error', // Checks effect dependencies
+        'react-hooks/exhaustive-deps': 'error', // Checks effect dependencies,
         'no-param-reassign': 'off',
     },
     globals: {
@@ -59,7 +61,7 @@ module.exports = {
     },
     overrides: [
         {
-            files: ['**/src/**/*.{test,stories}.{ts,tsx}'], // Переопределяет правила для файлов
+            files: ['**/src/**/*.{test,stories}.{ts,tsx}'],
             rules: {
                 'i18next/no-literal-string': 'off',
                 'max-len': 'off',

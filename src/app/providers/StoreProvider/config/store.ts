@@ -1,9 +1,8 @@
 import { configureStore, DeepPartial, ReducersMapObject } from '@reduxjs/toolkit';
 import { counterReducer } from 'entities/Counter';
-// import { counterReducer } from 'entities/Counter'; не работает
 import { userReducer } from 'entities/User';
-import { createReducerManager } from 'app/providers/StoreProvider/config/reducerManager';
 import { StateSchema } from './StateSchema';
+import { createReducerManager } from './reducerManager';
 
 export function createReduxStore(
     initialState?: StateSchema,

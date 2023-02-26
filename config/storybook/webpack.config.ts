@@ -1,10 +1,10 @@
 import webpack, { DefinePlugin, RuleSetRule } from 'webpack';
 import path from 'path';
-import { buildCssLoader } from '../build/loaders/cssLoader';
-import { BuildPath } from '../build/types/config';
+import { buildCssLoader } from '../build/loaders/buildCssLoader';
+import { BuildPaths } from '../build/types/config';
 
 export default ({ config }: {config: webpack.Configuration}) => {
-    const paths: BuildPath = {
+    const paths: BuildPaths = {
         build: '',
         html: '',
         entry: '',
@@ -27,6 +27,7 @@ export default ({ config }: {config: webpack.Configuration}) => {
         use: ['@svgr/webpack'],
     });
     config.module.rules.push(buildCssLoader(true));
+
     config.plugins.push(new DefinePlugin({
         __IS_DEV__: true,
     }));
