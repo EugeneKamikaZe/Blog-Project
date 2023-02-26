@@ -23,25 +23,25 @@
 .lds-grid div:nth-child(2) {
     top: 8px;
     left: 32px;
-    animation-delay: -0.4s;
+    animation-delay: -.4s;
 }
 
 .lds-grid div:nth-child(3) {
     top: 8px;
     left: 56px;
-    animation-delay: -0.8s;
+    animation-delay: -.8s;
 }
 
 .lds-grid div:nth-child(4) {
     top: 32px;
     left: 8px;
-    animation-delay: -0.4s;
+    animation-delay: -.4s;
 }
 
 .lds-grid div:nth-child(5) {
     top: 32px;
     left: 32px;
-    animation-delay: -0.8s;
+    animation-delay: -.8s;
 }
 
 .lds-grid div:nth-child(6) {
@@ -53,7 +53,7 @@
 .lds-grid div:nth-child(7) {
     top: 56px;
     left: 8px;
-    animation-delay: -0.8s;
+    animation-delay: -.8s;
 }
 
 .lds-grid div:nth-child(8) {
@@ -75,6 +75,6 @@
     }
 
     50% {
-        opacity: 0.5;
+        opacity: .5;
     }
 }
