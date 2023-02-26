@@ -34,7 +34,7 @@
   },
   "include": [
     "src",
-//    "src/app/types/global.d.ts",
+    //    "src/app/types/global.d.ts",
     "src/**/*.{ts,tsx}",
     "config/jest/setupTests.ts"
   ],

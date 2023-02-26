@@ -2,6 +2,7 @@
   "name": "reactproulbi",
   "version": "1.0.0",
   "description": "",
+  "main": "index.js",
   "scripts": {
     "dev": "webpack serve --env port=3400",
     "dev:server": "node ./json-server/index.js",
@@ -12,7 +13,7 @@
     "lint:scss": "npx stylelint \"**/*.scss\"",
     "lint:scss:fix": "npx stylelint \"**/*.scss\" --fix",
     "test:unit": "jest --config ./config/jest/jest.config.ts",
-    "test:ui": "npx loki test --port 6006",
+    "test:ui": "npx loki test",
     "test:ui:update": "npx loki update",
     "test:ui:ok": "npx loki approve",
     "test:ui:ci": "npx loki --requireReference --reactUri file:./storybook-static",
@@ -24,6 +25,9 @@
     "storybook:build": "build-storybook -c ./config/storybook",
     "prepare": "husky install"
   },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.17.5",
     "@babel/preset-env": "^7.16.11",
@@ -66,7 +70,7 @@
     "identity-obj-proxy": "^3.0.0",
     "jest": "^27.5.1",
     "json-server": "^0.17.0",
-    "loki": "^0.28.1",
+    "loki": "^0.31.0",
     "mini-css-extract-plugin": "^2.5.3",
     "reg-cli": "^0.17.6",
     "regenerator-runtime": "^0.13.9",
