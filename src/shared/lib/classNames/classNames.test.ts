@@ -1,6 +1,5 @@
-import { classNames } from './classNames';
+import { classNames } from 'shared/lib/classNames/classNames';
 
-// TODO написать асинхронно
 describe('classNames', () => {
     test('with only first param', () => {
         expect(classNames('someClass')).toBe('someClass');

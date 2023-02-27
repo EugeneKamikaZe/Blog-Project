@@ -1,10 +1,10 @@
 # dependencies
 /node_modules
 /coverage
-*-lock.json
 /storybook-static
 .loki/report.html
 .loki/report.json
+yarn.lock
 
 # System Files
 .DS_Store

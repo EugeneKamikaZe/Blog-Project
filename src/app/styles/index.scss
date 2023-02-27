@@ -2,9 +2,9 @@
 @import "./variables/global";
 @import "./themes/normal";
 @import "./themes/dark";
-@import "./components/loaders";
 
-body {
+.app,
+.app_modal {
     font: var(--font-m);
     color: var(--primary-color);
 }
@@ -16,10 +16,9 @@ body {
 
 .content-page {
     display: flex;
-    height: calc(100vh - var(--navbar-height));
 }
 
 .page-wrapper {
     flex-grow: 1;
-    padding: 24px;
+    padding: 20px;
 }
