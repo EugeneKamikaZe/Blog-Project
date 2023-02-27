@@ -1,27 +1,26 @@
 {
-  "name": "reactproulbi",
+  "name": "production-project",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack serve --env port=3400",
-    "dev:server": "node ./json-server/index.js",
-    "build:dev": "webpack --env mode=development",
-    "build:prod": "webpack --env mode=production",
-    "lint:ts": "eslint -c ./config/eslint/.eslintrc.js \"**/*.{ts,tsx}\"",
-    "lint:ts:fix": "eslint -c ./config/eslint/.eslintrc.js \"**/*.{ts,tsx}\" --quiet --fix",
+    "start": "webpack serve --env port=3000",
+    "start:dev:server": "node ./json-server/index.js",
+    "build:prod": "webpack  --env mode=production",
+    "build:dev": "webpack  --env mode=development",
+    "lint:ts": "eslint \"**/*.{ts,tsx}\"",
+    "lint:ts:fix": "eslint \"**/*.{ts,tsx}\" --fix --quiet",
     "lint:scss": "npx stylelint \"**/*.scss\"",
     "lint:scss:fix": "npx stylelint \"**/*.scss\" --fix",
     "test:unit": "jest --config ./config/jest/jest.config.ts",
     "test:ui": "npx loki test",
-    "test:ui:update": "npx loki update",
     "test:ui:ok": "npx loki approve",
-    "test:ui:ci": "npx loki --requireReference --reactUri file:./storybook-static",
+    "test:ui:ci": "loki --requireReference --reactUri file:./storybook-static",
     "test:ui:report": "npm run test:ui:json && npm run test:ui:html",
     "test:ui:json": "node scripts/generate-visual-json-report.js",
     "test:ui:html": "reg-cli --from .loki/report.json --report .loki/report.html",
     "test:coveralls": "jest --config ./config/jest/jest.config.ts --coverage && coveralls < coverage/lcov.info",
-    "storybook": "start-storybook -c ./config/storybook -p 6006",
+    "storybook": "start-storybook -p 6006 -c ./config/storybook",
     "storybook:build": "build-storybook -c ./config/storybook",
     "prepare": "husky install"
   },
@@ -72,7 +71,7 @@
     "json-server": "^0.17.0",
     "loki": "^0.31.0",
     "mini-css-extract-plugin": "^2.5.3",
-    "postcss": "^8.4.21",
+    "postcss": "8.4.21",
     "reg-cli": "^0.17.6",
     "regenerator-runtime": "^0.13.9",
     "sass": "^1.49.9",
@@ -103,12 +102,12 @@
   "loki": {
     "configurations": {
       "chrome.laptop": {
-        "target": "chrome.app",
+        "target": "chrome.docker",
         "width": 1366,
         "height": 768
       },
       "chrome.iphone7": {
-        "target": "chrome.app",
+        "target": "chrome.docker",
         "preset": "iPhone 7"
       }
     }
