@@ -1,11 +1,7 @@
-import React, { memo, useState } from 'react';
+import { memo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-interface MainPageProps {
-    className?: string;
-}
-
-const MainPage = memo(({ className }: MainPageProps) => {
+const MainPage = memo(() => {
     const { t } = useTranslation();
     const [value, setValue] = useState('');
 
