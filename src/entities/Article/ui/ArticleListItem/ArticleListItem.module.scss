@@ -41,7 +41,7 @@
 
 .SMALL {
     width: 230px;
-    transition: 0.2s;
+    transition: .2s;
     cursor: pointer;
 
     .date {
@@ -52,7 +52,7 @@
     }
 
     &:hover {
-        opacity: 0.8;
+        opacity: .8;
         transform: scale(1.01);
 
         .date {
