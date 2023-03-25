@@ -6,12 +6,11 @@ import { Navbar } from 'widgets/Navbar';
 import { Sidebar } from 'widgets/Sidebar';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUserInited, userActions } from 'entities/User';
-import { useNavigate } from 'react-router-dom';
 
 function App() {
     const { theme } = useTheme();
     const dispatch = useDispatch();
-    const isInited = useSelector(getUserInited);
+    const inited = useSelector(getUserInited);
 
     useEffect(() => {
         dispatch(userActions.initAuthData());
@@ -23,9 +22,7 @@ function App() {
                 <Navbar />
                 <div className="content-page">
                     <Sidebar />
-                    {
-                        isInited && <AppRouter />
-                    }
+                    {inited && <AppRouter />}
                 </div>
             </Suspense>
         </div>

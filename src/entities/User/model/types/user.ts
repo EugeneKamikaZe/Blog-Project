@@ -1,5 +1,5 @@
 export interface User {
-    id: string | number;
+    id: string;
     username: string;
     avatar?: string;
 }
@@ -7,5 +7,5 @@ export interface User {
 export interface UserSchema {
     authData?: User;
 
-    _isInited: boolean;
+    _inited: boolean;
 }

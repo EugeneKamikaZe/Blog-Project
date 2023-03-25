@@ -45,7 +45,7 @@ const LoginForm = memo(({ className, onSuccess }: LoginFormProps) => {
         if (result.meta.requestStatus === 'fulfilled') {
             onSuccess();
         }
-    }, [dispatch, onSuccess, password, username]);
+    }, [onSuccess, dispatch, password, username]);
 
     return (
         <DynamicModuleLoader
