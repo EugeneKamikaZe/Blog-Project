@@ -1,7 +1,10 @@
-import { configureStore, DeepPartial, ReducersMapObject } from '@reduxjs/toolkit';
+import { configureStore, ReducersMapObject } from '@reduxjs/toolkit';
 import { counterReducer } from 'entities/Counter';
 import { userReducer } from 'entities/User';
-import { StateSchema } from './StateSchema';
+import { $api } from 'shared/api/api';
+import { CombinedState, Reducer } from 'redux';
+import { uiReducer } from 'features/UI';
+import { StateSchema, ThunkExtraArg } from './StateSchema';
 import { createReducerManager } from './reducerManager';
 
 export function createReduxStore(
@@ -12,14 +15,24 @@ export function createReduxStore(
         ...asyncReducers,
         counter: counterReducer,
         user: userReducer,
+        ui: uiReducer,
     };
 
     const reducerManager = createReducerManager(rootReducers);
 
-    const store = configureStore<StateSchema>({
-        reducer: reducerManager.reduce,
+    const extraArg: ThunkExtraArg = {
+        api: $api,
+    };
+
+    const store = configureStore({
+        reducer: reducerManager.reduce as Reducer<CombinedState<StateSchema>>,
         devTools: __IS_DEV__,
         preloadedState: initialState,
+        middleware: (getDefaultMiddleware) => getDefaultMiddleware({
+            thunk: {
+                extraArgument: extraArg,
+            },
+        }),
     });
 
     // @ts-ignore
@@ -27,3 +40,5 @@ export function createReduxStore(
 
     return store;
 }
+
+export type AppDispatch = ReturnType<typeof createReduxStore>['dispatch'];
