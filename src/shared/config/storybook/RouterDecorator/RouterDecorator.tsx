@@ -1,3 +1,4 @@
+import { Story } from '@storybook/react';
 import { BrowserRouter } from 'react-router-dom';
 import { ReactNode } from 'react';
 

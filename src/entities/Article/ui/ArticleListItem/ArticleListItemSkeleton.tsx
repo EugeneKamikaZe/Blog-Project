@@ -7,7 +7,7 @@ import { ArticleView } from '../../model/types/article';
 
 interface ArticleListItemSkeletonProps {
     className?: string;
-    view: ArticleView;
+    view?: ArticleView;
 }
 
 export const ArticleListItemSkeleton = memo((props: ArticleListItemSkeletonProps) => {
@@ -33,7 +33,7 @@ export const ArticleListItemSkeleton = memo((props: ArticleListItemSkeletonProps
     }
 
     return (
-        <div className={classNames(cls.ArticleListItem, {}, [className, cls[view]])}>
+        <div className={classNames(cls.ArticleListItem, {}, [className])}>
             <Card className={cls.card}>
                 <div className={cls.imageWrapper}>
                     <Skeleton width={200} height={200} className={cls.img} />

@@ -8,7 +8,7 @@ export type ReducersList = {
 }
 
 interface DynamicModuleLoaderProps {
-    children: ReactNode,
+    children: ReactNode;
     reducers: ReducersList;
     removeAfterUnmount?: boolean;
 }
