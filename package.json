@@ -25,7 +25,8 @@
     "test:coveralls": "jest --config ./config/jest/jest.config.ts --coverage && coveralls < coverage/lcov.info",
     "storybook": "start-storybook -p 6006 -c ./config/storybook",
     "storybook:build": "build-storybook -c ./config/storybook",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "generate:slice": "node ./scripts/createSlice/index.js"
   },
   "keywords": [],
   "author": "",
