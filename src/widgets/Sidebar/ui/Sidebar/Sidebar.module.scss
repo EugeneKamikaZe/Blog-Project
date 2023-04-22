@@ -4,6 +4,7 @@
     background: var(--inverted-bg-color);
     position: relative;
     transition: width .3s;
+    z-index: 1;
 }
 
 .switchers {

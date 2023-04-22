@@ -24,7 +24,7 @@ interface ArticleListProps {
     view?: ArticleView;
 }
 
-const Header = () => <ArticlesPageFilters />;
+// const Header = () => <ArticlesPageFilters />;
 
 const getSkeletons = () => new Array(3)
     .fill(0)
@@ -60,40 +60,40 @@ export const ArticleList = memo((props: ArticleListProps) => {
         }
     });
 
-    const isBig = view === ArticleView.BIG;
-
-    const itemsPerRow = isBig ? 1 : 3;
-    const rowCount = isBig ? articles.length : Math.ceil(articles.length / itemsPerRow);
-
-    const rowRender = ({
-        index, isScrolling, key, style,
-    }: ListRowProps) => {
-        const items = [];
-        const fromIndex = index * itemsPerRow;
-        const toIndex = Math.min(fromIndex + itemsPerRow, articles.length);
-
-        for (let i = fromIndex; i < toIndex; i += 1) {
-            items.push(
-                <ArticleListItem
-                    article={articles[i]}
-                    view={view}
-                    target={target}
-                    key={`str${i}`}
-                    className={cls.card}
-                />,
-            );
-        }
-
-        return (
-            <div
-                key={key}
-                style={style}
-                className={cls.row}
-            >
-                {items}
-            </div>
-        );
-    };
+    // const isBig = view === ArticleView.BIG;
+    //
+    // const itemsPerRow = isBig ? 1 : 3;
+    // const rowCount = isBig ? articles.length : Math.ceil(articles.length / itemsPerRow);
+    //
+    // const rowRender = ({
+    //     index, isScrolling, key, style,
+    // }: ListRowProps) => {
+    //     const items = [];
+    //     const fromIndex = index * itemsPerRow;
+    //     const toIndex = Math.min(fromIndex + itemsPerRow, articles.length);
+    //
+    //     for (let i = fromIndex; i < toIndex; i += 1) {
+    //         items.push(
+    //             <ArticleListItem
+    //                 article={articles[i]}
+    //                 view={view}
+    //                 target={target}
+    //                 key={`str${i}`}
+    //                 className={cls.card}
+    //             />,
+    //         );
+    //     }
+    //
+    //     return (
+    //         <div
+    //             key={key}
+    //             style={style}
+    //             className={cls.row}
+    //         >
+    //             {items}
+    //         </div>
+    //     );
+    // };
 
     const renderArticle = (index: number, article: Article) => (
         <ArticleListItem
@@ -141,7 +141,7 @@ export const ArticleList = memo((props: ArticleListProps) => {
                     endReached={onLoadNext}
                     initialTopMostItemIndex={selectedArticleId}
                     components={{
-                        Header,
+                        // Header,
                         Footer,
                     }}
                 />

@@ -4,4 +4,12 @@
 
 .list {
     margin-top: 30px;
+    height: 100%;
+}
+
+.listWrap {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    padding: 24px 16px;
 }
