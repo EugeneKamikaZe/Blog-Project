@@ -22,6 +22,7 @@ interface ArticleListProps {
     isLoading?: boolean;
     target?: HTMLAttributeAnchorTarget;
     view?: ArticleView;
+    virtualized?: boolean;
 }
 
 // const Header = () => <ArticlesPageFilters />;
@@ -39,6 +40,7 @@ export const ArticleList = memo((props: ArticleListProps) => {
         view = ArticleView.SMALL,
         isLoading,
         target,
+        virtualized = true,
     } = props;
     const { t } = useTranslation();
     const [selectedArticleId, setSelectedArticleId] = useState(1);
@@ -133,21 +135,38 @@ export const ArticleList = memo((props: ArticleListProps) => {
 
     return (
         <div className={classNames(cls.ArticleList, {}, [className, cls[view]])}>
-            {view === ArticleView.BIG ? (
-                <Virtuoso
-                    style={{ height: '100%' }}
-                    data={articles}
-                    itemContent={renderArticle}
-                    endReached={onLoadNext}
-                    initialTopMostItemIndex={selectedArticleId}
-                    components={{
-                        // Header,
-                        Footer,
-                    }}
-                />
-            ) : (
-                ''
-            )}
+            {
+                // eslint-disable-next-line no-nested-ternary
+                virtualized ? (
+                    // @ts-ignore
+                    view === ArticleView.BIG ? (
+                        <Virtuoso
+                            style={{ height: '100%' }}
+                            data={articles}
+                            itemContent={renderArticle}
+                            endReached={onLoadNext}
+                            initialTopMostItemIndex={selectedArticleId}
+                            components={{
+                                // Header,
+                                Footer,
+                            }}
+                        />
+                    ) : (
+                        ''
+                    )
+                ) : (
+                    articles.map((item) => (
+                        <ArticleListItem
+                            article={item}
+                            view={view}
+                            className={cls.card}
+                            key={item.id}
+                            target={target}
+                        />
+                    ))
+                )
+            }
+
         </div>
     );
 });
