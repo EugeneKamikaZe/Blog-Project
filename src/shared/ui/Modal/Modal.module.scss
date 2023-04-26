@@ -8,6 +8,9 @@
     pointer-events: none;
     z-index: -1;
     color: var(--primary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .overlay {
@@ -23,8 +26,8 @@
     padding: 20px;
     border-radius: 12px;
     background: var(--bg-color);
-    transition: .3s transform;
-    transform: scale(.5);
+    transition: 0.3s transform;
+    transform: scale(0.5);
     max-width: 60%;
 }
 
@@ -40,6 +43,6 @@
 
 .isClosing {
     .content {
-        transform: scale(.2);
+        transform: scale(0.2);
     }
 }
