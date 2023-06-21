@@ -22,8 +22,8 @@ export enum TextSize {
 
 interface TextProps {
     className?: string;
-    title?: string | null;
-    text?: string | null;
+    title?: string;
+    text?: string;
     theme?: TextTheme;
     align?: TextAlign;
     size?: TextSize;
@@ -69,10 +69,7 @@ export const Text = memo((props: TextProps) => {
                 </HeaderTag>
             )}
             {text && (
-                <p
-                    className={cls.text}
-                    data-testid={`${dataTestId}.Paragraph`}
-                >
+                <p className={cls.text} data-testid={`${dataTestId}.Paragraph`}>
                     {text}
                 </p>
             )}
