@@ -1,7 +1,3 @@
-export {
-    ArticlesPageAsync as ArticlesPage,
-} from './ui/ArticlesPage/ArticlesPage.async';
-
-export { fetchNextArticlesPage } from './model/services/fetchNextArticlesPage/fetchNextArticlesPage';
+export { ArticlesPageAsync as ArticlesPage } from './ui/ArticlesPage/ArticlesPage.async';
 
 export type { ArticlesPageSchema } from './model/types/articlesPageSchema';

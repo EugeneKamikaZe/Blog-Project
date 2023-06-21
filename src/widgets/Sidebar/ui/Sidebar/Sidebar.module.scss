@@ -3,8 +3,7 @@
     width: var(--sidebar-width);
     background: var(--inverted-bg-color);
     position: relative;
-    transition: width .3s;
-    z-index: 1;
+    transition: width 0.3s;
 }
 
 .switchers {
@@ -23,6 +22,7 @@
     position: absolute;
     right: -32px;
     bottom: 32px;
+    z-index: 10;
 }
 
 .items {
