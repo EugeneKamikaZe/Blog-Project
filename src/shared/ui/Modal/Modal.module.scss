@@ -17,8 +17,8 @@
     padding: 20px;
     border-radius: 12px;
     background: var(--bg-color);
-    transition: 0.3s transform;
-    transform: scale(0.5);
+    transition: .3s transform;
+    transform: scale(.5);
     max-width: 60%;
     z-index: var(--modal-z-index);
 }
@@ -35,6 +35,6 @@
 
 .isClosing {
     .content {
-        transform: scale(0.2);
+        transform: scale(.2);
     }
 }
